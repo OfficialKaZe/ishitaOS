@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ishita OS - Galaxy Edition</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="desktop" id="desktop">
+        <div class="clock" id="clock"></div>
+
+        <div class="window" id="birthdayCountdown">
+            <div class="window-header">
+                <div class="window-controls">
+                    <div class="window-control close" onclick="closeWindow('birthdayCountdown')"></div>
+                    <div class="window-control minimize"></div>
+                    <div class="window-control maximize"></div>
+                </div>
+                <div class="window-title">🎂 Birthday Countdown</div>
+            </div>
+            <div class="window-content" style="text-align: center;">
+                <h2>Time until Ishita's Special Day!</h2>
+                <div class="countdown" id="countdownDisplay">Loading...</div>
+                <p style="margin-top: 20px;">July 29th - A day as special as you! 🌟</p>
+            </div>
+        </div>
+
+        <div class="window" id="chatBot">
+            <div class="window-header">
+                <div class="window-controls">
+                    <div class="window-control close" onclick="closeWindow('chatBot')"></div>
+                    <div class="window-control minimize"></div>
+                    <div class="window-control maximize"></div>
+                </div>
+                <div class="window-title">💬 Chat with Ishita AI</div>
+            </div>
+            <div class="window-content" style="padding: 0;">
+                <div class="chatbot">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message bot-message">Hey there! I'm your personal AI assistant. How can I help brighten your day? 💕</div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="handleChatKeyPress(event)">
+                        <button onclick="sendMessage()">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="window" id="starMap">
+            <div class="window-header">
+                <div class="window-controls">
+                    <div class="window-control close" onclick="closeWindow('starMap')"></div>
+                    <div class="window-control minimize"></div>
+                    <div class="window-control maximize"></div>
+                </div>
+                <div class="window-title">🌟 Interactive Star Map</div>
+            </div>
+            <div class="window-content" style="padding: 0;">
+                <div class="star-map" onclick="createStar(event)">
+                    <div style="color: white; text-align: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;">
+                        <p>✨ Click anywhere to create stars! ✨</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="window" id="ishitaAI">
+            <div class="window-header">
+                <div class="window-controls">
+                    <div class="window-control close" onclick="closeWindow('ishitaAI')"></div>
+                    <div class="window-control minimize"></div>
+                    <div class="window-control maximize"></div>
+                </div>
+                <div class="window-title">🧠 Ishita AI</div>
+            </div>
+            <div class="window-content" style="text-align: center;">
+                <h2>Your Personal AI Companion</h2>
+                <div class="breathing-circle"></div>
+                <p>Take a deep breath and relax...</p>
+                <div id="aiResponse" style="margin-top: 20px; padding: 20px; background: rgba(255, 255, 255, 0.1); border-radius: 15px;">
+                    <p>Hello, beautiful soul! I'm here to support you and remind you how amazing you are! 💕</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="window" id="shayariGenerator">
+            <div class="window-header">
+                <div class="window-controls">
+                    <div class="window-control close" onclick="closeWindow('shayariGenerator')"></div>
+                    <div class="window-control minimize"></div>
+                    <div class="window-control maximize"></div>
+                </div>
+                <div class="window-title">💝 Shayari Generator</div>
+            </div>
+            <div class="window-content" style="text-align: center;">
+                <h2>Generate Beautiful Shayaris</h2>
+                <p style="margin: 10px 0; color: #666;">Choose a theme to create heartfelt poetry</p>
+                
+                <div style="margin: 20px 0; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+                    <button onclick="generateShayari('love')" style="padding: 10px 20px; background: #e74c3c; color: white; border: none; border-radius: 25px; cursor: pointer; font-size: 14px;">❤️ Love</button>
+                    <button onclick="generateShayari('nostalgia')" style="padding: 10px 20px; background: #9b59b6; color: white; border: none; border-radius: 25px; cursor: pointer; font-size: 14px;">🌙 Nostalgia</button>
+                    <button onclick="generateShayari('relationship')" style="padding: 10px 20px; background: #f39c12; color: white; border: none; border-radius: 25px; cursor: pointer; font-size: 14px;">💑 Relationship</button>
+                    <button onclick="generateShayari('trust')" style="padding: 10px 20px; background: #27ae60; color: white; border: none; border-radius: 25px; cursor: pointer; font-size: 14px;">🤝 Trust</button>
+                </div>
+                
+                <div id="shayariDisplay" style="margin-top: 30px; padding: 25px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 15px; min-height: 120px; display: flex; align-items: center; justify-content: center;">
+                    <p style="font-style: italic; font-size: 16px; line-height: 1.6; text-align: center;">
+                        Click on a theme above to generate a beautiful shayari ✨
+                    </p>
+                </div>
+                
+                <button onclick="copyShayari()" style="margin-top: 15px; padding: 8px 16px; background: #34495e; color: white; border: none; border-radius: 20px; cursor: pointer; font-size: 12px;">📋 Copy Shayari</button>
+            </div>
+        </div>
+
+        <div class="taskbar">
+            <div class="app-icon countdown-icon" onclick="openWindow('birthdayCountdown')" title="Birthday Countdown">🎂</div>
+            <div class="app-icon chat-icon" onclick="openWindow('chatBot')" title="Chat with AI">💬</div>
+            <div class="app-icon star-icon" onclick="openWindow('starMap')" title="Star Map">🌟</div>
+            <div class="app-icon ai-icon" onclick="openWindow('ishitaAI')" title="Ishita AI">🧠</div>
+            <div class="app-icon shayari-icon" onclick="openWindow('shayariGenerator')" title="Shayari Generator">💝</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
